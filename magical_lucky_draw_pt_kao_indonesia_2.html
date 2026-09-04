@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PT KAO INDONESIA FAMILY GATHERING 2026 - Magical Lucky Draw</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- SheetJS (XLSX Parser & Exporter) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 60%, #020617 100%);
+      color: #f1f5f9;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Magical Purple & Blue Glow Tokens */
+    .magic-glow-purple {
+      box-shadow: 0 0 35px rgba(147, 51, 234, 0.45), inset 0 0 20px rgba(168, 85, 247, 0.25);
+    }
+
+    .magic-glow-blue {
+      box-shadow: 0 0 35px rgba(37, 99, 235, 0.45), inset 0 0 20px rgba(59, 130, 246, 0.25);
+    }
+    
+    .magic-glow-gold {
+      box-shadow: 0 0 40px rgba(234, 179, 8, 0.6), inset 0 0 25px rgba(250, 204, 21, 0.3);
+    }
+
+    .magic-gold-text {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef08a 20%, #eab308 60%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 10px rgba(234, 179, 8, 0.4));
+    }
+
+    .magic-cyan-text {
+      background: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.4));
+    }
+
+    .magic-text-shadow {
+      text-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+
+    /* Floating Clouds Animation */
+    @keyframes floatCloudLeft {
+      0% { transform: translateX(-10%); }
+      50% { transform: translateX(10%); }
+      100% { transform: translateX(-10%); }
+    }
+
+    @keyframes floatCloudRight {
+      0% { transform: translateX(10%); }
+      50% { transform: translateX(-10%); }
+      100% { transform: translateX(10%); }
+    }
+
+    .animate-cloud-left {
+      animation: floatCloudLeft 28s ease-in-out infinite;
+    }
+
+    .animate-cloud-right {
+      animation: floatCloudRight 34s ease-in-out infinite;
+    }
+
+    /* Pulsing Magic Aura Animation */
+    @keyframes pulseAura {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.02); opacity: 1; filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.8)); }
+    }
+
+    .animate-pulse-aura {
+      animation: pulseAura 4s infinite ease-in-out;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4c1d95;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6d28d9;
+    }
+  </style>
+</head>
+<body class="relative flex flex-col justify-between select-none">
+
+  <!-- Canvas for Starry Particles -->
+  <canvas id="starCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Animated Cloud Layers & Castle Backdrop (Magical Atmosphere) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+    <!-- Top Left Cloud -->
+    <svg class="absolute -top-12 -left-20 w-96 md:w-[600px] text-purple-600/40 fill-current animate-cloud-left blur-xl" viewBox="0 0 200 200">
+      <path d="M45,-60C58.3,-50.2,69,-36.5,73.5,-21.2C78,13.2,76.3,26.4,68.8,38.8C61.3,51.2,48,62.8,32.8,69.5C17.6,76.2,0.5,78,-16.2,74.8C-32.9,71.6,-49.2,63.4,-60.1,50.2C-71,37,-76.5,18.5,-75.4,0.6C-74.3,-17.3,-66.6,-34.6,-54.6,-44.8C-42.6,-55,-21.3,-58.1,-2.3,-55.4C16.7,-52.7,31.7,-69.8,45,-60Z" transform="translate(100 100)" />
+    </svg>
+
+    <!-- Top Right Cloud -->
+    <svg class="absolute -top-10 -right-20 w-96 md:w-[650px] text-blue-600/40 fill-current animate-cloud-right blur-xl" viewBox="0 0 200 200">
+      <path d="M41.5,-54.8C53.7,-46.3,63.6,-33.5,67.8,-18.9C72,-4.3,70.5,12.1,64.1,26.4C57.7,40.7,46.4,52.9,32.8,60.2C19.2,67.5,3.3,69.9,-12.3,67.2C-27.9,64.5,-43.2,56.7,-53.8,44.2C-64.4,31.7,-70.3,14.5,-70,-2.3C-69.7,-19.1,-63.2,-35.5,-51.7,-44.3C-40.2,-53.1,-23.7,-54.3,-7.4,-53.5C8.9,-52.7,29.3,-63.3,41.5,-54.8Z" transform="translate(100 100)" />
+    </svg>
+
+    <!-- Bottom Castle Silhouettes -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl flex justify-between items-end opacity-25 pointer-events-none px-6">
+      <i class="fa-solid fa-chess-rook text-8xl md:text-9xl text-purple-400"></i>
+      <i class="fa-solid fa-fort-awesome text-[12rem] md:text-[16rem] text-blue-400"></i>
+      <i class="fa-solid fa-chess-rook text-8xl md:text-9xl text-purple-400"></i>
+    </div>
+  </div>
+
+  <div class="relative z-10 flex flex-col min-h-screen">
+    
+    <!-- Header Section -->
+    <header class="border-b border-purple-800/40 bg-slate-950/80 backdrop-blur-xl px-4 md:px-8 py-4 shadow-2xl flex flex-col md:flex-row justify-between items-center gap-4">
+      
+      <!-- Logo Main Title & Subtitle Container -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+        
+        <!-- Main Logo: Wonderland of Togetherness -->
+        <div class="relative group cursor-pointer transition-transform duration-300 hover:scale-105">
+          <img src="logo_2.PNG" 
+               alt="Wonderland of Togetherness - PT KAO Indonesia" 
+               class="h-20 md:h-24 w-auto object-contain filter drop-shadow-[0_0_18px_rgba(168,85,247,0.6)] hover:drop-shadow-[0_0_25px_rgba(234,179,8,0.8)] transition-all duration-300"
+               onerror="this.style.display='none'; document.getElementById('svgFallbackLogo').classList.remove('hidden');" />
+          
+          <!-- Fallback SVG Vector if image fails to load -->
+          <svg id="svgFallbackLogo" class="hidden h-20 md:h-24 w-auto filter drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" viewBox="0 0 620 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#1e1b4d">
+              <rect x="260" y="80" width="100" height="220" rx="2"/>
+              <polygon points="310,12 260,80 360,80"/>
+              <polygon points="310,12 310,32 334,22" fill="#1e1b4d"/>
+              <line x1="310" y1="8" x2="310" y2="38" stroke="#1e1b4d" stroke-width="3"/>
+              <rect x="180" y="140" width="60" height="160" rx="2"/>
+              <polygon points="210,70 180,140 240,140"/>
+              <polygon points="210,70 210,88 190,79" fill="#1e1b4d"/>
+              <line x1="210" y1="65" x2="210" y2="92" stroke="#1e1b4d" stroke-width="2.5"/>
+              <rect x="380" y="140" width="60" height="160" rx="2"/>
+              <polygon points="410,70 380,140 440,140"/>
+              <polygon points="410,70 410,88 430,79" fill="#1e1b4d"/>
+              <line x1="410" y1="65" x2="410" y2="92" stroke="#1e1b4d" stroke-width="2.5"/>
+              <rect x="135" y="210" width="35" height="100"/>
+              <polygon points="152.5,160 135,210 170,210"/>
+              <polygon points="152.5,160 152.5,174 136,167" fill="#1e1b4d"/>
+              <line x1="152.5" y1="155" x2="152.5" y2="178" stroke="#1e1b4d" stroke-width="2"/>
+              <rect x="495" y="200" width="45" height="110"/>
+              <polygon points="517.5,140 495,200 540,200"/>
+              <polygon points="517.5,140 517.5,156 536,148" fill="#1e1b4d"/>
+              <line x1="517.5" y1="135" x2="517.5" y2="160" stroke="#1e1b4d" stroke-width="2.5"/>
+              <path d="M90,290 L560,290 L560,340 L90,340 Z"/>
+            </g>
+            <path d="M 235 195 C 130 160, 35 235, 55 320 C 70 385, 175 410, 310 392 C 430 375, 530 330, 560 365 C 525 330, 410 355, 305 372 C 180 392, 85 370, 75 320 C 60 250, 150 190, 235 195 Z" fill="#ffffff" />
+            <g font-family="'Cinzel', serif" font-weight="900" text-anchor="middle">
+              <text x="310" y="282" font-size="50" fill="#ffffff" stroke="#1e1b4d" stroke-width="7" stroke-linejoin="round" letter-spacing="2" paint-order="stroke fill">WONDERLAND</text>
+              <text x="310" y="328" font-size="33" fill="#ffffff" stroke="#1e1b4d" stroke-width="6" stroke-linejoin="round" letter-spacing="3" paint-order="stroke fill">OF TOGETHERNESS</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Subtitle Requested -->
+        <div class="border-t sm:border-t-0 sm:border-l border-purple-700/50 pt-2 sm:pt-0 sm:pl-4">
+          <h2 class="text-lg sm:text-xl md:text-2xl font-extrabold font-cinzel magic-gold-text tracking-wider uppercase">
+            PT KAO INDONESIA FAMILY GATHERING 2026
+          </h2>
+          <p class="text-xs sm:text-sm text-cyan-300/90 font-medium tracking-widest italic flex items-center justify-center sm:justify-start gap-1.5 mt-0.5">
+            <i class="fa-solid fa-wand-sparkles text-pink-400 text-xs"></i>
+            Official Magical Lucky Draw System
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Action Navigation Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+        <button onclick="openModal('participantsModal')" class="px-3.5 py-2 md:px-4 md:py-2.5 rounded-xl bg-purple-950/70 hover:bg-purple-900 border border-purple-500/40 text-purple-200 text-xs md:text-sm font-semibold transition flex items-center gap-2 shadow-lg hover:border-purple-400">
+          <i class="fa-solid fa-users text-purple-400"></i>
+          <span>Database Peserta (<span id="countPeserta">0</span>)</span>
+        </button>
+
+        <button onclick="openModal('prizesModal')" class="px-3.5 py-2 md:px-4 md:py-2.5 rounded-xl bg-blue-950/70 hover:bg-blue-900 border border-blue-500/40 text-blue-200 text-xs md:text-sm font-semibold transition flex items-center gap-2 shadow-lg hover:border-blue-400">
+          <i class="fa-solid fa-gift text-cyan-400"></i>
+          <span>Daftar Hadiah (<span id="countHadiah">0</span>)</span>
+        </button>
+
+        <button onclick="openModal('winnersModal')" class="px-3.5 py-2 md:px-4 md:py-2.5 rounded-xl bg-amber-950/70 hover:bg-amber-900 border border-amber-500/40 text-amber-200 text-xs md:text-sm font-semibold transition flex items-center gap-2 shadow-lg hover:border-amber-400">
+          <i class="fa-solid fa-trophy text-amber-400"></i>
+          <span>Pemenang (<span id="countPemenang">0</span>)</span>
+        </button>
+
+        <button onclick="toggleSound()" id="soundToggleBtn" class="p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-amber-300 text-sm transition" title="Toggle Sound">
+          <i class="fa-solid fa-volume-high text-lg"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Arena -->
+    <main class="flex-1 flex flex-col items-center justify-between p-4 md:p-6 max-w-7xl mx-auto w-full">
+      
+      <!-- Top Prize Selector & Batch Settings Banner -->
+      <div class="w-full bg-slate-950/80 border border-purple-500/40 rounded-2xl p-4 md:p-5 backdrop-blur-xl magic-glow-blue flex flex-wrap justify-between items-center gap-4 mb-4">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-300 text-slate-950 flex items-center justify-center text-2xl font-bold shadow-lg">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <div>
+            <span class="text-xs uppercase tracking-widest text-purple-300/80 font-bold">Kategori Hadiah Aktif:</span>
+            <h2 id="activePrizeNameDisplay" class="text-lg md:text-2xl font-bold text-amber-300 font-cinzel">
+              MOTOR MATIC HONDA (Sisa: 2)
+            </h2>
+          </div>
+        </div>
+
+        <!-- Draw Quantity Selector & Quick Select Prize Dropdown -->
+        <div class="flex flex-wrap items-center gap-3">
+          
+          <!-- Select Active Prize -->
+          <div class="flex items-center bg-purple-950/80 border border-purple-500/40 rounded-xl px-3 py-2">
+            <label for="selectActivePrize" class="text-xs text-purple-200 font-medium mr-2">Pilih Hadiah:</label>
+            <select id="selectActivePrize" onchange="changeActivePrize()" class="bg-slate-900 text-amber-300 font-bold text-xs md:text-sm focus:outline-none cursor-pointer rounded-lg p-1.5">
+              <!-- Dynamically Populated -->
+            </select>
+          </div>
+
+          <!-- Quantity Selector (1-10 Names) -->
+          <div class="flex items-center bg-indigo-950/80 border border-indigo-500/40 rounded-xl px-3 py-2">
+            <label for="winnerBatchCountSelect" class="text-xs text-cyan-200 font-medium mr-2">Jumlah Diacak:</label>
+            <select id="winnerBatchCountSelect" class="bg-slate-900 text-cyan-300 font-extrabold text-xs md:text-sm focus:outline-none cursor-pointer rounded-lg p-1.5">
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+              <option value="5" selected>5 Orang</option>
+              <option value="6">6 Orang</option>
+              <option value="7">7 Orang</option>
+              <option value="8">8 Orang</option>
+              <option value="9">9 Orang</option>
+              <option value="10">10 Orang</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Large Multi-Winner Stage Container -->
+      <div class="relative w-full flex-1 my-2 flex flex-col justify-center items-center">
+        
+        <!-- Rotating Aura Decorative Ring -->
+        <div class="absolute -inset-4 rounded-3xl border border-purple-500/20 animate-pulse-aura pointer-events-none"></div>
+
+        <!-- Stage Box -->
+        <div class="w-full bg-slate-950/85 border-2 border-purple-500/50 rounded-3xl p-4 md:p-6 magic-glow-purple backdrop-blur-2xl flex flex-col justify-between items-center min-h-[460px] shadow-2xl">
+          
+          <!-- Stage Header Indicator -->
+          <div class="w-full flex justify-between items-center mb-3 border-b border-purple-900/50 pb-2">
+            <div class="flex items-center gap-2 text-xs md:text-sm font-bold text-purple-300">
+              <i class="fa-solid fa-wand-sparkles text-amber-400"></i>
+              <span>Panggung Pengundian Pemenang</span>
+            </div>
+            <div class="text-xs text-cyan-300 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">
+              Pengacakan Sekaligus: <span id="displayCountBadge" class="font-bold text-amber-400">5 Peserta</span>
+            </div>
+          </div>
+
+          <!-- DYNAMIC WINNER CARDS GRID CONTAINER (Displays Name, NIK, & Prize Won) -->
+          <div id="winnerGridContainer" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 my-auto py-2">
+            <!-- Dynamically populated winner cards (1 to 10 slots) -->
+          </div>
+
+          <!-- Spin Action Control Button -->
+          <div class="mt-6 w-full flex justify-center">
+            <button id="btnDraw" onclick="startDraw()" class="relative group px-10 py-4 md:py-5 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white font-black text-xl md:text-2xl tracking-widest font-cinzel shadow-2xl hover:shadow-purple-500/50 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-4 border border-purple-300/40">
+              <i class="fa-solid fa-wand-magic-sparkles text-2xl md:text-3xl text-amber-300 group-hover:rotate-12 transition-transform"></i>
+              <span>PUTAR UNDIAN SEKARANG</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer Banner -->
+    <footer class="border-t border-purple-900/40 bg-slate-950/80 px-6 py-3 text-center text-xs text-purple-300/60 font-medium">
+      PT KAO Indonesia &bull; Family Gathering 2026 &bull; Official Magical Lucky Draw System
+    </footer>
+  </div>
+
+  <!-- ==================== PARTICIPANTS MODAL (EXCEL IMPORT) ==================== -->
+  <div id="participantsModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-purple-500/50 rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-purple-900/60 flex justify-between items-center bg-slate-950/70">
+        <h3 class="font-cinzel font-bold text-lg text-purple-200 flex items-center gap-2">
+          <i class="fa-solid fa-users text-pink-400"></i> Kelola Database Peserta (Excel)
+        </h3>
+        <button onclick="closeModal('participantsModal')" class="text-slate-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 overflow-y-auto space-y-5 flex-1">
+        
+        <!-- Upload Box -->
+        <div class="border-2 border-dashed border-purple-500/40 hover:border-purple-400 rounded-2xl p-6 text-center bg-purple-950/20 transition cursor-pointer relative">
+          <input type="file" id="excelParticipantInput" accept=".xlsx, .xls, .csv" class="absolute inset-0 opacity-0 cursor-pointer" onchange="handleParticipantUpload(event)">
+          <i class="fa-solid fa-file-excel text-4xl text-emerald-400 mb-2"></i>
+          <p class="font-bold text-slate-200 text-sm">Upload Database Peserta (.xlsx / .csv)</p>
+          <p class="text-xs text-slate-400 mt-1">Kolom A: <b>Nama Peserta</b> | Kolom B: <b>NIK</b> | Kolom C: <b>Divisi/Departemen</b></p>
+        </div>
+
+        <!-- Sample Data Quick Button -->
+        <div class="flex justify-between items-center bg-purple-950/40 border border-purple-900/50 p-3 rounded-xl">
+          <span class="text-xs text-purple-300 font-medium">Belum ada file? Gunakan sampel data bawaan PT KAO:</span>
+          <button onclick="loadSampleParticipants()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-lg transition">
+            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Load Sample Data (50 Peserta)
+          </button>
+        </div>
+
+        <!-- Table List -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-bold text-purple-300">Daftar Peserta Terdaftar (<span id="modalParticipantCount">0</span>)</span>
+            <button onclick="clearParticipants()" class="text-xs text-red-400 hover:text-red-300">
+              <i class="fa-solid fa-trash mr-1"></i> Hapus Semua Peserta
+            </button>
+          </div>
+
+          <div class="max-h-56 overflow-y-auto border border-purple-900/40 rounded-xl bg-slate-950/70">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-purple-950/90 text-purple-300 sticky top-0">
+                <tr>
+                  <th class="p-3">#</th>
+                  <th class="p-3">Nama Lengkap</th>
+                  <th class="p-3">NIK</th>
+                  <th class="p-3">Divisi / Departemen</th>
+                  <th class="p-3 text-right">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="participantTableBody" class="divide-y divide-purple-950/50 text-slate-300">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 border-t border-purple-900/60 bg-slate-950/70 flex justify-end">
+        <button onclick="closeModal('participantsModal')" class="px-5 py-2 bg-purple-800 hover:bg-purple-700 text-white text-sm font-semibold rounded-xl">
+          Selesai
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== PRIZES MODAL (EXCEL IMPORT) ==================== -->
+  <div id="prizesModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-blue-500/50 rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-blue-900/60 flex justify-between items-center bg-slate-950/70">
+        <h3 class="font-cinzel font-bold text-lg text-cyan-200 flex items-center gap-2">
+          <i class="fa-solid fa-gift text-cyan-400"></i> Kelola Daftar Hadiah (Excel)
+        </h3>
+        <button onclick="closeModal('prizesModal')" class="text-slate-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 overflow-y-auto space-y-5 flex-1">
+        
+        <!-- Upload Box -->
+        <div class="border-2 border-dashed border-blue-500/40 hover:border-blue-400 rounded-2xl p-6 text-center bg-blue-950/20 transition cursor-pointer relative">
+          <input type="file" id="excelPrizeInput" accept=".xlsx, .xls, .csv" class="absolute inset-0 opacity-0 cursor-pointer" onchange="handlePrizeUpload(event)">
+          <i class="fa-solid fa-file-excel text-4xl text-cyan-400 mb-2"></i>
+          <p class="font-bold text-slate-200 text-sm">Upload Daftar Hadiah (.xlsx / .csv)</p>
+          <p class="text-xs text-slate-400 mt-1">Kolom A: <b>Nama Hadiah</b> | Kolom B: <b>Jumlah/Kuota</b> | Kolom C: <b>Kategori</b></p>
+        </div>
+
+        <!-- Sample Data Quick Button -->
+        <div class="flex justify-between items-center bg-blue-950/40 border border-blue-900/50 p-3 rounded-xl">
+          <span class="text-xs text-cyan-300 font-medium">Gunakan daftar hadiah standar Family Gathering:</span>
+          <button onclick="loadSamplePrizes()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-lg transition">
+            <i class="fa-solid fa-gift mr-1"></i> Load Sample Hadiah
+          </button>
+        </div>
+
+        <!-- Table List -->
+        <div>
+          <span class="text-xs font-bold text-cyan-300 block mb-2">Daftar Hadiah Tersedia (<span id="modalPrizeCount">0</span>)</span>
+
+          <div class="max-h-56 overflow-y-auto border border-blue-900/40 rounded-xl bg-slate-950/70">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-blue-950/90 text-cyan-300 sticky top-0">
+                <tr>
+                  <th class="p-3">#</th>
+                  <th class="p-3">Nama Hadiah</th>
+                  <th class="p-3">Kategori</th>
+                  <th class="p-3">Jumlah Kuota</th>
+                  <th class="p-3 text-right">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="prizeTableBody" class="divide-y divide-blue-950/50 text-slate-300">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 border-t border-blue-900/60 bg-slate-950/70 flex justify-end">
+        <button onclick="closeModal('prizesModal')" class="px-5 py-2 bg-blue-800 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl">
+          Selesai
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== WINNERS MODAL (EXPORT EXCEL) ==================== -->
+  <div id="winnersModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-amber-500/50 rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-amber-900/60 flex justify-between items-center bg-slate-950/70">
+        <h3 class="font-cinzel font-bold text-lg magic-gold-text flex items-center gap-2">
+          <i class="fa-solid fa-trophy text-amber-400"></i> Rekapitulasi Pemenang Undian
+        </h3>
+        <button onclick="closeModal('winnersModal')" class="text-slate-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 overflow-y-auto space-y-4 flex-1">
+        
+        <div class="flex flex-wrap justify-between items-center gap-2">
+          <p class="text-xs text-slate-300">Total Pemenang Terdaftar: <b id="modalWinnerCount" class="text-amber-400">0</b> orang</p>
+          
+          <div class="flex gap-2">
+            <button onclick="exportWinnersExcel()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition flex items-center gap-2 shadow-lg">
+              <i class="fa-solid fa-file-excel"></i> Export Excel (.xlsx)
+            </button>
+            <button onclick="resetWinnersList()" class="px-3 py-2 bg-red-900/60 hover:bg-red-800 text-red-200 text-xs font-bold rounded-xl transition flex items-center gap-1.5">
+              <i class="fa-solid fa-rotate-left"></i> Reset Pemenang
+            </button>
+          </div>
+        </div>
+
+        <div class="max-h-72 overflow-y-auto border border-amber-900/40 rounded-xl bg-slate-950/70">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-amber-950/80 text-amber-300 sticky top-0">
+              <tr>
+                <th class="p-3">#</th>
+                <th class="p-3">Nama Pemenang</th>
+                <th class="p-3">NIK</th>
+                <th class="p-3">Divisi</th>
+                <th class="p-3">Hadiah Yang Dimenangkan</th>
+                <th class="p-3">Waktu Menang</th>
+              </tr>
+            </thead>
+            <tbody id="winnerTableBody" class="divide-y divide-amber-950/30 text-slate-300">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 border-t border-amber-900/60 bg-slate-950/70 flex justify-end">
+        <button onclick="closeModal('winnersModal')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-xl">
+          Tutup
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       APP STATE & STORAGE
+    ============================================================ */
+    let participants = []; // { id, name, nik, division }
+    let prizes = [];       // { id, name, qty, category }
+    let winners = [];      // { id, name, nik, division, prize, timestamp }
+    let lastDrawnWinners = []; // Store winners of the latest spin to persist on stage cards
+    
+    let activePrizeIndex = 0;
+    let isSpinning = false;
+    let soundEnabled = true;
+
+    /* ============================================================
+       CANVAS BACKGROUND STARRY SYSTEM
+    ============================================================ */
+    const starCanvas = document.getElementById('starCanvas');
+    const starCtx = starCanvas.getContext('2d');
+    let stars = [];
+
+    function resizeStarCanvas() {
+      starCanvas.width = window.innerWidth;
+      starCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeStarCanvas);
+    resizeStarCanvas();
+
+    class Star {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * starCanvas.width;
+        this.y = Math.random() * starCanvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.color = ['#a855f7', '#38bdf8', '#fef08a', '#ffffff'][Math.floor(Math.random() * 4)];
+        this.alpha = Math.random() * 0.8 + 0.2;
+        this.speed = Math.random() * 0.01 + 0.005;
+      }
+      update() {
+        this.alpha += Math.sin(Date.now() * this.speed) * 0.02;
+        if (this.alpha <= 0) this.reset();
+      }
+      draw() {
+        starCtx.save();
+        starCtx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
+        starCtx.fillStyle = this.color;
+        starCtx.beginPath();
+        starCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        starCtx.fill();
+        starCtx.restore();
+      }
+    }
+
+    for (let i = 0; i < 90; i++) {
+      stars.push(new Star());
+    }
+
+    function animateStars() {
+      starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+      stars.forEach(s => {
+        s.update();
+        s.draw();
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+    /* ============================================================
+       WEB AUDIO SYNTHESIZER (No External Audio Files)
+    ============================================================ */
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new AudioCtx();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playTickSound() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(500 + Math.random() * 500, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.04);
+      } catch (e) {}
+    }
+
+    function playVictorySound() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C Major Fanfare
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.12);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.12 + 0.5);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + idx * 0.12);
+          osc.stop(audioCtx.currentTime + idx * 0.12 + 0.5);
+        });
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const btn = document.getElementById('soundToggleBtn');
+      btn.innerHTML = soundEnabled 
+        ? '<i class="fa-solid fa-volume-high text-lg"></i>' 
+        : '<i class="fa-solid fa-volume-xmark text-lg text-red-400"></i>';
+    }
+
+    /* ============================================================
+       SAMPLE DATA LOADERS
+    ============================================================ */
+    function loadSampleParticipants() {
+      const sampleNames = [
+        "Ignatius Raka Hendrasuteja", "Christina Septy Widayanti", "Gracia Lentera Chaka Suteja",
+        "Ahmad Subagja", "Siti Rahmawati", "Budi Pratama", "Dewi Lestari", "Eko Prasetyo",
+        "Fajar Nugraha", "Gita Gutawa", "Hendra Wijaya", "Indah Permata", "Joko Susilo",
+        "Kartika Putri", "Lukman Hakim", "Maya Saphira", "Nanda Kurnia", "Oki Setiana",
+        "Putri Titian", "Rizky Febian", "Sisca Kohl", "Taufik Hidayat", "Umar Said",
+        "Vina Panduwinata", "Wahyu Hidayat", "Xena Warrior", "Yusuf Mansur", "Zaskia Gotik",
+        "Andi Wijaya", "Bambang Pamungkas", "Cinta Laura", "Denny Cagur", "Erlangga Putra",
+        "Fitri Tropica", "Gading Marten", "Hesti Purwadinata", "Irfan Hakim", "Julia Perez",
+        "Kaesang Pangarep", "Luna Maya", "Muley Hassan", "Nia Ramadhani", "Olga Syahputra",
+        "Pevita Pearce", "Raffi Ahmad", "Sule Sutisna", "Tora Sudiro", "Uus Wijaya",
+        "Vino G Bastian", "Wika Salim"
+      ];
+
+      participants = sampleNames.map((name, i) => ({
+        id: Date.now() + i,
+        name: name,
+        nik: `1991${1000 + i}`,
+        division: ['Production', 'Marketing', 'HRD', 'Finance', 'Logistics', 'QA'][i % 6]
+      }));
+
+      updateUI();
+      customNotification("Berhasil memuat 50 Sampel Peserta PT KAO!");
+    }
+
+    function loadSamplePrizes() {
+      prizes = [
+        { id: 1, name: "Motor Matic Honda", qty: 2, category: "Grand Prize" },
+        { id: 2, name: "Smart TV LED 50 Inch", qty: 5, category: "Main Prize" },
+        { id: 3, name: "Kulkas 2 Pintu", qty: 5, category: "Main Prize" },
+        { id: 4, name: "Mesin Cuci Otomatis", qty: 10, category: "Secondary Prize" },
+        { id: 5, name: "Voucher Belanja Rp 1.000.000", qty: 20, category: "Consolation" }
+      ];
+
+      activePrizeIndex = 0;
+      updateUI();
+      customNotification("Berhasil memuat Sampel Hadiah Family Gathering!");
+    }
+
+    /* ============================================================
+       EXCEL IMPORTERS (SHEETJS PARSER)
+    ============================================================ */
+    function handleParticipantUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          const json = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+          let list = [];
+          if (json.length > 0) {
+            let startIdx = 0;
+            // Detect header row
+            let firstRowStr = json[0].map(c => String(c).toLowerCase()).join(' ');
+            if (firstRowStr.includes('nama') || firstRowStr.includes('nik') || firstRowStr.includes('name')) {
+              startIdx = 1;
+            }
+            for (let i = startIdx; i < json.length; i++) {
+              let row = json[i];
+              if (row && row.length > 0 && row[0]) {
+                list.push({
+                  id: Date.now() + i,
+                  name: String(row[0]).trim(),
+                  nik: row[1] ? String(row[1]).trim() : `NIK-${i+100}`,
+                  division: row[2] ? String(row[2]).trim() : 'KAO Family'
+                });
+              }
+            }
+          }
+
+          if (list.length > 0) {
+            participants = list;
+            lastDrawnWinners = [];
+            updateUI();
+            customNotification(`Berhasil mengimpor ${list.length} Peserta dari Excel!`);
+          } else {
+            alert("File Excel kosong atau format tidak sesuai.");
+          }
+        } catch (err) {
+          alert("Gagal membaca file Excel Peserta.");
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function handlePrizeUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          const json = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+          let list = [];
+          json.forEach((row, idx) => {
+            if (row.length > 0 && row[0]) {
+              if (idx === 0 && String(row[0]).toLowerCase().includes('hadiah')) return;
+              list.push({
+                id: Date.now() + idx,
+                name: String(row[0]).trim(),
+                qty: row[1] ? parseInt(row[1]) : 1,
+                category: row[2] ? String(row[2]).trim() : 'Door Prize'
+              });
+            }
+          });
+
+          if (list.length > 0) {
+            prizes = list;
+            activePrizeIndex = 0;
+            updateUI();
+            customNotification(`Berhasil mengimpor ${list.length} Kategori Hadiah dari Excel!`);
+          }
+        } catch (err) {
+          alert("Gagal membaca file Excel Hadiah.");
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    /* ============================================================
+       UI UPDATE & CARDS RENDERER (NAME, NIK, AND PRIZE DISPLAY)
+    ============================================================ */
+    function updateUI() {
+      // Update counters
+      document.getElementById('countPeserta').innerText = participants.length;
+      document.getElementById('modalParticipantCount').innerText = participants.length;
+      document.getElementById('countHadiah').innerText = prizes.length;
+      document.getElementById('modalPrizeCount').innerText = prizes.length;
+      document.getElementById('countPemenang').innerText = winners.length;
+      document.getElementById('modalWinnerCount').innerText = winners.length;
+
+      // Populate Prize Dropdown
+      const prizeSelect = document.getElementById('selectActivePrize');
+      prizeSelect.innerHTML = prizes.length > 0
+        ? prizes.map((p, idx) => `<option value="${idx}">${p.name} (${p.category} - Qty: ${p.qty})</option>`).join('')
+        : `<option value="">Belum ada hadiah</option>`;
+      
+      if (prizes.length > 0) {
+        prizeSelect.value = activePrizeIndex;
+        const cur = prizes[activePrizeIndex];
+        document.getElementById('activePrizeNameDisplay').innerText = `${cur.name.toUpperCase()} (${cur.category} - Sisa: ${cur.qty})`;
+      } else {
+        document.getElementById('activePrizeNameDisplay').innerText = "BELUM ADA HADIAH DIPILIH";
+      }
+
+      renderParticipantTable();
+      renderPrizeTable();
+      renderWinnerTable();
+      renderWinnerSlots();
+    }
+
+    function changeActivePrize() {
+      const val = parseInt(document.getElementById('selectActivePrize').value);
+      if (!isNaN(val) && prizes[val]) {
+        activePrizeIndex = val;
+        updateUI();
+      }
+    }
+
+    // Render winner slots on main stage (1 to 10 slots) with persistence for last drawn winners
+    function renderWinnerSlots() {
+      const container = document.getElementById('winnerGridContainer');
+      const targetBatchCount = parseInt(document.getElementById('winnerBatchCountSelect').value);
+      document.getElementById('displayCountBadge').innerText = `${targetBatchCount} Peserta Sekaligus`;
+
+      // Adjust Grid layout columns dynamically
+      let colClass = "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5";
+      if (targetBatchCount <= 2) colClass = "grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto";
+      else if (targetBatchCount <= 4) colClass = "grid-cols-1 sm:grid-cols-2 md:grid-cols-4";
+
+      container.className = `w-full grid ${colClass} gap-3 md:gap-4 my-auto py-2`;
+
+      const activePrize = prizes[activePrizeIndex] ? prizes[activePrizeIndex].name : 'Hadiah Undian';
+
+      let html = '';
+      for (let i = 0; i < targetBatchCount; i++) {
+        const hasWinner = lastDrawnWinners && lastDrawnWinners[i];
+
+        if (hasWinner) {
+          const w = lastDrawnWinners[i];
+          html += `
+            <div id="winnerCard_${i}" class="bg-gradient-to-b from-amber-950/90 via-yellow-950/80 to-slate-950 border-2 border-amber-400 rounded-2xl p-4 flex flex-col items-center justify-center text-center magic-glow-gold shadow-2xl min-h-[160px] transform transition-all duration-500">
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-900/90 text-amber-200 text-[10px] font-extrabold uppercase mb-2 border border-amber-400/50">
+                PEMENANG #${i + 1}
+              </span>
+              <!-- NAMA PEMENANG DISPLAY -->
+              <p id="cardName_${i}" class="text-base md:text-xl font-extrabold text-amber-300 tracking-wide break-words line-clamp-2 my-1 magic-text-shadow">
+                ${w.name}
+              </p>
+              <!-- NIK BADGE DISPLAY -->
+              <div id="cardNik_${i}" class="mt-1 px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-mono font-black text-xs md:text-sm shadow-lg">
+                NIK: ${w.nik}
+              </div>
+              <!-- HADIAH YANG DIDAPAT DISPLAY -->
+              <div id="cardPrize_${i}" class="mt-2 text-xs font-black text-amber-200 bg-amber-900/80 px-3 py-1 rounded-md border border-amber-300/60 w-full truncate shadow">
+                <i class="fa-solid fa-gift mr-1 text-amber-400"></i> <span id="cardPrizeText_${i}">${w.prize}</span>
+              </div>
+            </div>
+          `;
+        } else {
+          html += `
+            <div id="winnerCard_${i}" class="bg-gradient-to-b from-purple-950/80 via-indigo-950/90 to-slate-950 border-2 border-purple-500/40 rounded-2xl p-4 flex flex-col items-center justify-center text-center magic-glow-purple shadow-xl min-h-[160px] transition-all duration-300">
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-900/80 text-amber-300 text-[10px] font-extrabold uppercase mb-2 border border-purple-400/30">
+                SLOT PEMENANG #${i + 1}
+              </span>
+              <!-- NAMA PEMENANG DISPLAY -->
+              <p id="cardName_${i}" class="text-base md:text-xl font-extrabold text-white tracking-wide break-words line-clamp-2 my-1">
+                SIAP DIACAK
+              </p>
+              <!-- NIK BADGE DISPLAY -->
+              <div id="cardNik_${i}" class="mt-1 px-3 py-1 rounded-lg bg-blue-950/80 border border-cyan-500/40 text-cyan-300 font-mono font-bold text-xs md:text-sm shadow-inner">
+                NIK: ------
+              </div>
+              <!-- HADIAH YANG DIDAPAT DISPLAY -->
+              <div id="cardPrize_${i}" class="mt-2 text-xs font-bold text-amber-300/90 bg-amber-950/40 px-2.5 py-1 rounded-md border border-amber-500/30 w-full truncate">
+                <i class="fa-solid fa-gift mr-1 text-amber-400"></i> <span id="cardPrizeText_${i}">${activePrize}</span>
+              </div>
+            </div>
+          `;
+        }
+      }
+      container.innerHTML = html;
+    }
+
+    document.getElementById('winnerBatchCountSelect').addEventListener('change', () => {
+      lastDrawnWinners = []; // Reset visual slots when user changes batch count selector
+      renderWinnerSlots();
+    });
+
+    /* ============================================================
+       SPINNING / DRAWING LOGIC ENGINE
+    ============================================================ */
+    function startDraw() {
+      if (isSpinning) return;
+
+      if (participants.length === 0) {
+        alert("Database peserta masih kosong! Masukkan file Excel atau gunakan Sample Data.");
+        openModal('participantsModal');
+        return;
+      }
+
+      if (prizes.length === 0) {
+        alert("Daftar hadiah masih kosong! Masukkan file Excel Hadiah.");
+        openModal('prizesModal');
+        return;
+      }
+
+      const batchQty = parseInt(document.getElementById('winnerBatchCountSelect').value);
+      if (participants.length < batchQty) {
+        alert(`Jumlah peserta tersisa (${participants.length}) tidak cukup untuk mengacak ${batchQty} pemenang sekaligus!`);
+        return;
+      }
+
+      // Clear previous batch visual slots for new spin
+      lastDrawnWinners = [];
+      renderWinnerSlots();
+
+      isSpinning = true;
+      const btn = document.getElementById('btnDraw');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      let duration = 3800; // 3.8 seconds spin duration
+      let startTime = Date.now();
+
+      const activePrizeObj = prizes[activePrizeIndex];
+
+      // Fast spinning shuffle animation
+      const spinInterval = setInterval(() => {
+        for (let i = 0; i < batchQty; i++) {
+          const randomIdx = Math.floor(Math.random() * participants.length);
+          const p = participants[randomIdx];
+          
+          const nameCard = document.getElementById(`cardName_${i}`);
+          const nikCard = document.getElementById(`cardNik_${i}`);
+          const prizeCard = document.getElementById(`cardPrizeText_${i}`);
+          if (nameCard) nameCard.innerText = p.name;
+          if (nikCard) nikCard.innerText = `NIK: ${p.nik}`;
+          if (prizeCard) prizeCard.innerText = activePrizeObj ? activePrizeObj.name : '';
+        }
+        playTickSound();
+
+        if (Date.now() - startTime >= duration) {
+          clearInterval(spinInterval);
+          finalizeDrawBatch(batchQty);
+        }
+      }, 75);
+    }
+
+    function finalizeDrawBatch(qty) {
+      let currentPrize = prizes[activePrizeIndex];
+      let timeNow = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+      lastDrawnWinners = [];
+
+      for (let i = 0; i < qty; i++) {
+        // Pick unique winner from participants candidate pool
+        const randomIndex = Math.floor(Math.random() * participants.length);
+        const winner = participants[randomIndex];
+
+        const winnerRecord = {
+          id: winner.id,
+          name: winner.name,
+          nik: winner.nik,
+          division: winner.division,
+          prize: currentPrize.name,
+          timestamp: timeNow
+        };
+
+        // Record to global winners list and last drawn memory
+        winners.push(winnerRecord);
+        lastDrawnWinners.push(winnerRecord);
+
+        // Remove winner from participant candidate list so they won't win twice
+        participants.splice(randomIndex, 1);
+      }
+
+      // Deduct prize quota if applicable
+      if (currentPrize && currentPrize.qty > 0) {
+        currentPrize.qty = Math.max(0, currentPrize.qty - qty);
+      }
+
+      playVictorySound();
+      triggerConfetti();
+
+      // Render updated UI and preserve lastDrawnWinners on cards
+      updateUI();
+
+      // Enable button
+      isSpinning = false;
+      const btn = document.getElementById('btnDraw');
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    function triggerConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 160,
+          spread: 90,
+          origin: { y: 0.6 },
+          colors: ['#fef08a', '#eab308', '#a855f7', '#38bdf8', '#ffffff']
+        });
+      }
+    }
+
+    /* ============================================================
+       TABLE RENDERERS & EXPORT EXCEL
+    ============================================================ */
+    function renderParticipantTable() {
+      const tbody = document.getElementById('participantTableBody');
+      if (participants.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500">Belum ada data peserta. Upload file Excel.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = participants.map((p, idx) => `
+        <tr class="hover:bg-purple-900/30">
+          <td class="p-3 text-slate-500">${idx + 1}</td>
+          <td class="p-3 font-semibold text-slate-200">${p.name}</td>
+          <td class="p-3 text-cyan-300 font-mono">${p.nik}</td>
+          <td class="p-3 text-slate-400">${p.division}</td>
+          <td class="p-3 text-right">
+            <button onclick="deleteParticipant(${p.id})" class="text-red-400 hover:text-red-300">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPrizeTable() {
+      const tbody = document.getElementById('prizeTableBody');
+      if (prizes.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-500">Belum ada data hadiah. Upload file Excel.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = prizes.map((p, idx) => `
+        <tr class="hover:bg-blue-900/30">
+          <td class="p-3 text-slate-500">${idx + 1}</td>
+          <td class="p-3 font-bold text-cyan-300">${p.name}</td>
+          <td class="p-3 text-slate-400">${p.category}</td>
+          <td class="p-3 font-bold text-amber-300">${p.qty} Item</td>
+          <td class="p-3 text-right">
+            <button onclick="deletePrize(${p.id})" class="text-red-400 hover:text-red-300">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderWinnerTable() {
+      const tbody = document.getElementById('winnerTableBody');
+      if (winners.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500">Belum ada pemenang yang terundi.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = winners.map((w, idx) => `
+        <tr class="hover:bg-amber-950/30">
+          <td class="p-3 font-bold text-amber-500">${idx + 1}</td>
+          <td class="p-3 font-bold text-amber-200">${w.name}</td>
+          <td class="p-3 text-cyan-300 font-mono font-bold">${w.nik}</td>
+          <td class="p-3 text-slate-400">${w.division}</td>
+          <td class="p-3 font-semibold text-emerald-400">${w.prize}</td>
+          <td class="p-3 text-slate-500 text-[10px]">${w.timestamp}</td>
+        </tr>
+      `).join('');
+    }
+
+    function deleteParticipant(id) {
+      participants = participants.filter(p => p.id !== id);
+      updateUI();
+    }
+
+    function clearParticipants() {
+      if (confirm("Hapus seluruh data peserta?")) {
+        participants = [];
+        updateUI();
+      }
+    }
+
+    function deletePrize(id) {
+      prizes = prizes.filter(p => p.id !== id);
+      updateUI();
+    }
+
+    function exportWinnersExcel() {
+      if (winners.length === 0) {
+        alert("Belum ada data pemenang untuk dieksport!");
+        return;
+      }
+
+      const excelRows = winners.map((w, idx) => ({
+        "No": idx + 1,
+        "Nama Pemenang": w.name,
+        "NIK": w.nik,
+        "Divisi / Departemen": w.division,
+        "Hadiah Dimenangkan": w.prize,
+        "Waktu Pengundian": w.timestamp
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(excelRows);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Pemenang KAO 2026");
+      XLSX.writeFile(workbook, `Pemenang_KAO_Family_Gathering_2026.xlsx`);
+    }
+
+    function resetWinnersList() {
+      if (confirm("Reset seluruh rekapitulasi pemenang?")) {
+        winners = [];
+        updateUI();
+      }
+    }
+
+    /* ============================================================
+       MODALS & TOAST HELPERS
+    ============================================================ */
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function customNotification(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-5 right-5 z-50 bg-gradient-to-r from-purple-700 to-indigo-600 text-white px-5 py-3 rounded-2xl shadow-2xl border border-purple-300/40 text-xs md:text-sm font-bold flex items-center gap-2 animate-bounce';
+      toast.innerHTML = `<i class="fa-solid fa-circle-check text-amber-300 text-lg"></i> <span>${msg}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    // Auto load sample data on startup for immediate interactive preview
+    window.onload = function() {
+      loadSampleParticipants();
+      loadSamplePrizes();
+    };
+  </script>
+</body>
+</html>
