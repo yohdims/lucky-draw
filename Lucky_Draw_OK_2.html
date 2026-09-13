@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT KAO INDONESIA FAMILY GATHERING 2026 - Wonderland of Togetherness</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SheetJS untuk membaca file Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d061f 0%, #170b3b 50%, #0a1128 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .magical-glow {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+        .panel-glass {
+            background: linear-gradient(145deg, rgba(30, 15, 60, 0.8), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col lg:flex-row">
+
+    <!-- SIDEBAR KIRI (Identitas & Panel Kontrol) -->
+    <aside class="w-full lg:w-80 bg-[#0f0728]/90 border-r border-purple-900/50 p-6 flex flex-col justify-between shrink-0 shadow-2xl relative z-10">
+        <div>
+            <!-- Logo Kao Indonesia -->
+            <div class="text-center mb-5">
+                <center>
+                    
+                <img src="Kao-Indonesia.png" 
+               alt="Wonderland of Togetherness - PT KAO Indonesia" 
+               class="h-20  object-contain filter drop-shadow-[0_0_18px_rgba(168,85,247,0.6)] transition-all duration-300"
+               onerror="this.style.display='none'; document.getElementById('svgFallbackLogo').classList.remove('hidden');" />
+                </center>
+                <!-- <div class="text-white font-bold text-2xl tracking-wider">KAO</div> -->
+                <!-- <div class="text-xs text-purple-300 tracking-widest uppercase">Indonesia</div> -->
+            </div>
+
+            <!-- Judul & Subjudul -->
+            <div class="mb-10 text-center ">
+                <h1 class="text-lg font-bold text-white uppercase leading-tight mb-2">FAMILY GATHERING <br>2026</h1>
+                <img src="logo_3.png" 
+               alt="Wonderland of Togetherness - PT KAO Indonesia" 
+               class="w-100 object-contain filter drop-shadow-[0_0_18px_rgba(168,85,247,0.6)] transition-all duration-300"
+               onerror="this.style.display='none'; document.getElementById('svgFallbackLogo').classList.remove('hidden');" />
+                <!-- <div class="inline-block px-3 py-1 rounded-full bg-purple-900/60 border border-purple-500/40 text-purple-200 text-xs font-medium tracking-wide shadow-inner">
+                    ✨ Wonderland of Togetherness
+                </div> -->
+            </div>
+
+            <!-- Panel Navigasi / Status Data -->
+            <div class="space-y-3">
+                <button onclick="openModal('modalPeserta')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-800/50 transition text-sm font-medium">
+                    <span class="flex items-center gap-2">👥 Database Peserta</span>
+                    <span id="badgePeserta" class="bg-purple-600 px-2.5 py-0.5 rounded-full text-xs font-bold">50</span>
+                </button>
+
+                <button onclick="openModal('modalHadiah')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-800/50 transition text-sm font-medium">
+                    <span class="flex items-center gap-2">🎁 Daftar Hadiah</span>
+                    <span id="badgeHadiah" class="bg-blue-600 px-2.5 py-0.5 rounded-full text-xs font-bold">5</span>
+                </button>
+
+                <button onclick="openModal('modalPemenang')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-purple-950/60 hover:bg-purple-900/80 border border-purple-800/50 transition text-sm font-medium">
+                    <span class="flex items-center gap-2">🏆 Riwayat Pemenang</span>
+                    <span id="badgePemenang" class="bg-amber-600 px-2.5 py-0.5 rounded-full text-xs font-bold">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Sidebar -->
+        <div class="mt-8 pt-4 border-t border-purple-900/50 text-center text-xs text-purple-400/60">
+            &copy; 2026 PT Kao Indonesia<br>Magical Event System
+        </div>
+    </aside>
+
+    <!-- KONTEN UTAMA -->
+    <main class="flex-1 flex flex-col p-6 lg:p-10 relative overflow-hidden">
+        <!-- Background Dekoratif Magical Castle / Awan -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- TOP BAR: Kategori Hadiah Aktif -->
+        <div class="panel-glass rounded-2xl p-4 mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xl">
+                    👑
+                </div>
+                <div>
+                    <div class="text-xs text-purple-300 font-medium uppercase tracking-wider">Kategori Hadiah Aktif</div>
+                    <div id="activePrizeTitle" class="text-lg font-bold text-white">Memuat Hadiah...</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <div class="flex flex-col">
+                    <label class="text-[10px] text-purple-300 uppercase">Pilih Hadiah</label>
+                    <select id="selectHadiah" onchange="changeActivePrize()" class="bg-purple-950/80 border border-purple-700/60 text-white text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:border-purple-400">
+                        <!-- Options filled via JS -->
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-[10px] text-purple-300 uppercase">Jumlah Sekaligus</label>
+                    <select id="selectJmlAcak" onchange="updateSlotsUI()" class="bg-purple-950/80 border border-purple-700/60 text-white text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:border-purple-400">
+                        <option value="1">1 Orang</option>
+                        <option value="2">2 Orang</option>
+                        <option value="3">3 Orang</option>
+                        <option value="5" selected>5 Orang</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- AREA PANGGUNG PENGUNDIAN PEMENANG (Teks Berjajar Vertikal tanpa Kotak Slot) -->
+        <div class="flex-1 flex flex-col justify-center items-center my-4">
+            <div class="w-full flex justify-between items-center mb-3 px-2">
+                <span class="text-sm font-semibold tracking-wide text-purple-200 flex items-center gap-2">
+                    ✨ Panggung Pengundian Pemenang
+                </span>
+                <span id="slotInfoCount" class="text-xs px-3 py-1 rounded-full bg-blue-900/40 border border-blue-500/30 text-blue-200">
+                    Pengacakan: 5 Peserta Sekaligus
+                </span>
+            </div>
+
+            <!-- Container Baris Teks Pemenang -->
+            <div class="panel-glass rounded-2xl w-full p-4 mb-6 shadow-2xl overflow-hidden">
+                <!-- Header Kolom Vertikal -->
+                <div class="grid grid-cols-12 gap-2 pb-3 mb-2 border-b border-purple-800/40 text-xs font-bold text-purple-300 uppercase tracking-wider text-center">
+                    <div class="col-span-1">No</div>
+                    <div class="col-span-4 text-left px-2">Nama Pemenang</div>
+                    <div class="col-span-3">NIK</div>
+                    <div class="col-span-4">Departemen</div>
+                </div>
+                <!-- Daftar Baris Dinamis -->
+                <div id="textSlotsContainer" class="space-y-2 max-h-[320px] overflow-y-auto pr-1">
+                    <!-- Diisi oleh Javascript -->
+                </div>
+            </div>
+
+            <!-- TOMBOL UTAMA START / STOP -->
+            <div class="w-full max-w-md">
+                <button id="btnAction" onclick="toggleDraw()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg tracking-wider magical-glow transition-all transform active:scale-95 flex items-center justify-center gap-3 shadow-2xl">
+                    <span id="btnIcon">✨</span>
+                    <span id="btnText">PUTAR UNDIAN SEKARANG</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DATABASE PESERTA -->
+    <div id="modalPeserta" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="panel-glass rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col p-6">
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-purple-900/50">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">👥 Database Peserta</h3>
+                <button onclick="closeModal('modalPeserta')" class="text-purple-400 hover:text-white text-xl font-bold">&times;</button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-xs text-purple-300 mb-1">Unggah File Excel Peserta (.xlsx / .xls)</label>
+                <input type="file" id="filePeserta" accept=".xlsx, .xls" onchange="importPeserta(event)" class="w-full text-sm text-purple-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-500 cursor-pointer bg-purple-950/40 rounded-xl border border-purple-800/50 p-2">
+                <p class="text-[11px] text-purple-400 mt-1">Format kolom excel minimal harus memiliki header: <code class="text-purple-200 font-mono">nama</code>, <code class="text-purple-200 font-mono">nik</code>, dan <code class="text-purple-200 font-mono">departemen</code></p>
+            </div>
+            <div class="flex-1 overflow-y-auto border border-purple-900/40 rounded-xl p-2 bg-purple-950/20">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-purple-900/40 text-purple-200 sticky top-0">
+                        <tr>
+                            <th class="p-2.5">No</th>
+                            <th class="p-2.5">Nama Peserta</th>
+                            <th class="p-2.5">NIK</th>
+                            <th class="p-2.5">Departemen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablePesertaBody" class="divide-y divide-purple-900/20 text-purple-100">
+                        <!-- Data populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-right">
+                <button onclick="closeModal('modalPeserta')" class="px-5 py-2 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-sm font-semibold">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DAFTAR HADIAH -->
+    <div id="modalHadiah" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="panel-glass rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col p-6">
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-purple-900/50">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">🎁 Daftar Hadiah</h3>
+                <button onclick="closeModal('modalHadiah')" class="text-purple-400 hover:text-white text-xl font-bold">&times;</button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-xs text-purple-300 mb-1">Unggah File Excel Hadiah (.xlsx / .xls)</label>
+                <input type="file" id="fileHadiah" accept=".xlsx, .xls" onchange="importHadiah(event)" class="w-full text-sm text-purple-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer bg-purple-950/40 rounded-xl border border-purple-800/50 p-2">
+                <p class="text-[11px] text-purple-400 mt-1">Format kolom excel minimal harus memiliki header: <code class="text-purple-200 font-mono">hadiah</code> dan <code class="text-purple-200 font-mono">qty</code></p>
+            </div>
+            <div class="flex-1 overflow-y-auto border border-purple-900/40 rounded-xl p-2 bg-purple-950/20">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-purple-900/40 text-purple-200 sticky top-0">
+                        <tr>
+                            <th class="p-2.5">No</th>
+                            <th class="p-2.5">Nama Hadiah</th>
+                            <th class="p-2.5 text-center">Jumlah (Qty)</th>
+                            <th class="p-2.5 text-center">Sisa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableHadiahBody" class="divide-y divide-purple-900/20 text-purple-100">
+                        <!-- Data populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-right">
+                <button onclick="closeModal('modalHadiah')" class="px-5 py-2 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-sm font-semibold">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PEMENANG -->
+    <div id="modalPemenang" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="panel-glass rounded-2xl w-full max-w-3xl max-h-[85vh] flex flex-col p-6">
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-purple-900/50">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">🏆 Riwayat Pemenang Terpilih</h3>
+                <div class="flex gap-2">
+                    <button onclick="exportPemenangExcel()" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1">📥 Export Excel</button>
+                    <button onclick="closeModal('modalPemenang')" class="text-purple-400 hover:text-white text-xl font-bold ml-2">&times;</button>
+                </div>
+            </div>
+            <div class="flex-1 overflow-y-auto border border-purple-900/40 rounded-xl p-2 bg-purple-950/20">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-purple-900/40 text-purple-200 sticky top-0">
+                        <tr>
+                            <th class="p-2.5">No</th>
+                            <th class="p-2.5">Nama Pemenang</th>
+                            <th class="p-2.5">NIK</th>
+                            <th class="p-2.5">Departemen</th>
+                            <th class="p-2.5">Hadiah</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablePemenangBody" class="divide-y divide-purple-900/20 text-purple-100">
+                        <tr>
+                            <td colspan="5" class="text-center p-4 text-purple-400">Belum ada pemenang yang diundi.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 text-right">
+                <button onclick="closeModal('modalPemenang')" class="px-5 py-2 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-sm font-semibold">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT UTAMA -->
+    <script>
+        // Data Dummy Awal Lengkap dengan Departemen
+        let pesertaList = [
+            { nama: "Budi Santoso", nik: "KAO-2026-001", departemen: "Production" },
+            { nama: "Siti Rahmawati", nik: "KAO-2026-002", departemen: "QA / QC" },
+            { nama: "Ahmad Fauzi", nik: "KAO-2026-003", departemen: "Supply Chain" },
+            { nama: "Dewi Lestari", nik: "KAO-2026-004", departemen: "Marketing" },
+            { nama: "Eko Prasetyo", nik: "KAO-2026-005", departemen: "HR & GA" },
+            { nama: "Rina Marlina", nik: "KAO-2026-006", departemen: "Finance & Accounting" },
+            { nama: "Joko Widodo", nik: "KAO-2026-007", departemen: "Engineering" },
+            { nama: "Sri Wahyuni", nik: "KAO-2026-008", departemen: "Sales" },
+            { nama: "Hendra Gunawan", nik: "KAO-2026-009", departemen: "Production" },
+            { nama: "Mega Pertiwi", nik: "KAO-2026-010", departemen: "IT / IS" }
+        ];
+        
+        // Buat data dummy otomatis hingga 50 karyawan
+        const depts = ["Production", "Quality Assurance", "Supply Chain", "Marketing", "HR & GA", "Finance", "Engineering", "Sales", "IT"];
+        for(let i=11; i<=50; i++) {
+            pesertaList.push({ 
+                nama: `Karyawan Kao ${i}`, 
+                nik: `KAO-2026-${String(i).padStart(3, '0')}`, 
+                departemen: depts[(i - 1) % depts.length] 
+            });
+        }
+
+        let hadiahList = [
+            { hadiah: "Motor Matic Honda (Grand Prize)", qty: 2, sisa: 2 },
+            { hadiah: "Smart TV 50 Inch", qty: 3, sisa: 3 },
+            { hadiah: "Kulkas 2 Pintu", qty: 5, sisa: 5 },
+            { hadiah: "Smartphone Android Flagship", qty: 10, sisa: 10 },
+            { hadiah: "Voucher Belanja Rp 1.000.000", qty: 30, sisa: 30 }
+        ];
+
+        let pemenangList = [];
+        let isRolling = false;
+        let rollInterval = null;
+
+        window.onload = function() {
+            updateDropdownHadiah();
+            updateBadges();
+            updateSlotsUI();
+            renderTables();
+        };
+
+        function updateBadges() {
+            document.getElementById('badgePeserta').innerText = pesertaList.length;
+            document.getElementById('badgeHadiah').innerText = hadiahList.length;
+            document.getElementById('badgePemenang').innerText = pemenangList.length;
+        }
+
+        function updateDropdownHadiah() {
+            const select = document.getElementById('selectHadiah');
+            select.innerHTML = '';
+            hadiahList.forEach((h, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.text = `${h.hadiah} (Sisa: ${h.sisa})`;
+                if(h.sisa <= 0) opt.disabled = true;
+                select.appendChild(opt);
+            });
+            changeActivePrize();
+        }
+
+        function changeActivePrize() {
+            const idx = document.getElementById('selectHadiah').value;
+            if(hadiahList[idx]) {
+                document.getElementById('activePrizeTitle').innerText = `${hadiahList[idx].hadiah.toUpperCase()} (Sisa: ${hadiahList[idx].sisa})`;
+            } else {
+                document.getElementById('activePrizeTitle').innerText = "Semua Hadiah Telah Habis";
+            }
+        }
+
+        function updateSlotsUI() {
+            const count = parseInt(document.getElementById('selectJmlAcak').value);
+            document.getElementById('slotInfoCount').innerText = `Pengacakan: ${count} Peserta Sekaligus`;
+            const container = document.getElementById('textSlotsContainer');
+            container.innerHTML = '';
+
+            for(let i = 1; i <= count; i++) {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'grid grid-cols-12 gap-2 items-center py-2 px-3 rounded-xl bg-purple-950/40 border border-purple-800/30 text-sm';
+                rowDiv.innerHTML = `
+                    <div class="col-span-1 text-center font-bold text-purple-400">#${i}</div>
+                    <div class="col-span-4 font-bold text-white truncate px-2" id="slotName_${i}">SIAP DIACAK</div>
+                    <div class="col-span-3 text-center font-mono text-purple-300 text-xs" id="slotNik_${i}">-------</div>
+                    <div class="col-span-4 text-center font-medium text-amber-300 text-xs truncate" id="slotDept_${i}">-------</div>
+                `;
+                container.appendChild(rowDiv);
+            }
+        }
+
+        // Fungsi Tombol START / STOP Utama
+        function toggleDraw() {
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnAction = document.getElementById('btnAction');
+            const count = parseInt(document.getElementById('selectJmlAcak').value);
+            const hadiahIdx = document.getElementById('selectHadiah').value;
+
+            if (!hadiahList[hadiahIdx] || hadiahList[hadiahIdx].sisa <= 0) {
+                alert("Hadiah yang dipilih sudah habis! Silakan pilih hadiah lain.");
+                return;
+            }
+            if (pesertaList.length === 0) {
+                alert("Database peserta kosong! Silakan unggah file peserta.");
+                return;
+            }
+
+            if (!isRolling) {
+                // STATUS: START -> BERUBAH MENJADI STOP
+                isRolling = true;
+                btnText.innerText = "STOP";
+                btnIcon.innerText = "⏹️";
+                btnAction.className = "w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-lg tracking-wider magical-glow transition-all transform active:scale-95 flex items-center justify-center gap-3 shadow-2xl animate-pulse-slow";
+
+                // Animasi Acak Teks Berjalan
+                rollInterval = setInterval(() => {
+                    for(let i = 1; i <= count; i++) {
+                        const randomPeserta = pesertaList[Math.floor(Math.random() * pesertaList.length)];
+                        const nameEl = document.getElementById(`slotName_${i}`);
+                        const nikEl = document.getElementById(`slotNik_${i}`);
+                        const deptEl = document.getElementById(`slotDept_${i}`);
+
+                        if(nameEl && nikEl && deptEl) {
+                            nameEl.innerText = randomPeserta.nama;
+                            nikEl.innerText = randomPeserta.nik;
+                            deptEl.innerText = randomPeserta.departemen;
+                        }
+                    }
+                }, 60);
+
+            } else {
+                // STATUS: STOP -> MENGUNCI PEMENANG
+                clearInterval(rollInterval);
+                isRolling = false;
+                btnText.innerText = "PUTAR UNDIAN SEKARANG";
+                btnIcon.innerText = "✨";
+                btnAction.className = "w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg tracking-wider magical-glow transition-all transform active:scale-95 flex items-center justify-center gap-3 shadow-2xl";
+
+                let selectedWinners = [];
+                let currentPool = [...pesertaList];
+                let activePrize = hadiahList[hadiahIdx];
+                let actualDrawCount = Math.min(count, activePrize.sisa, currentPool.length);
+
+                for(let i = 1; i <= actualDrawCount; i++) {
+                    const randomIndex = Math.floor(Math.random() * currentPool.length);
+                    const winner = currentPool.splice(randomIndex, 1)[0];
+                    selectedWinners.push(winner);
+
+                    // Tampilkan hasil final sejajar secara vertikal
+                    document.getElementById(`slotName_${i}`).innerText = winner.nama;
+                    document.getElementById(`slotNik_${i}`).innerText = winner.nik;
+                    document.getElementById(`slotDept_${i}`).innerText = winner.departemen;
+
+                    // Catat ke pemenang
+                    pemenangList.unshift({
+                        nama: winner.nama,
+                        nik: winner.nik,
+                        departemen: winner.departemen,
+                        hadiah: activePrize.hadiah
+                    });
+                }
+
+                // Kosongkan baris sisa jika undian lebih sedikit dari slot tampil
+                for(let i = actualDrawCount + 1; i <= count; i++) {
+                    document.getElementById(`slotName_${i}`).innerText = "-";
+                    document.getElementById(`slotNik_${i}`).innerText = "-";
+                    document.getElementById(`slotDept_${i}`).innerText = "-";
+                }
+
+                // Kurangi sisa hadiah & hapus dari pool peserta aktif
+                activePrize.sisa -= actualDrawCount;
+                selectedWinners.forEach(w => {
+                    pesertaList = pesertaList.filter(p => p.nik !== w.nik);
+                });
+
+                updateBadges();
+                updateDropdownHadiah();
+                renderTables();
+            }
+        }
+
+        // Render Tabel Modal
+        function renderTables() {
+            const tbodyPeserta = document.getElementById('tablePesertaBody');
+            tbodyPeserta.innerHTML = pesertaList.length ? '' : `<tr><td colspan="4" class="text-center p-4 text-purple-400">Tidak ada peserta.</td></tr>`;
+            pesertaList.forEach((p, idx) => {
+                tbodyPeserta.innerHTML += `<tr><td class="p-2.5">${idx+1}</td><td class="p-2.5 font-medium">${p.nama}</td><td class="p-2.5 font-mono text-purple-300">${p.nik}</td><td class="p-2.5">${p.departemen}</td></tr>`;
+            });
+
+            const tbodyHadiah = document.getElementById('tableHadiahBody');
+            tbodyHadiah.innerHTML = '';
+            hadiahList.forEach((h, idx) => {
+                tbodyHadiah.innerHTML += `<tr><td class="p-2.5">${idx+1}</td><td class="p-2.5 font-medium">${h.hadiah}</td><td class="p-2.5 text-center">${h.qty}</td><td class="p-2.5 text-center font-bold text-amber-400">${h.sisa}</td></tr>`;
+            });
+
+            const tbodyPemenang = document.getElementById('tablePemenangBody');
+            if(pemenangList.length === 0) {
+                tbodyPemenang.innerHTML = `<tr><td colspan="5" class="text-center p-4 text-purple-400">Belum ada pemenang yang diundi.</td></tr>`;
+            } else {
+                tbodyPemenang.innerHTML = '';
+                pemenangList.forEach((p, idx) => {
+                    tbodyPemenang.innerHTML += `<tr><td class="p-2.5">${idx+1}</td><td class="p-2.5 font-medium">${p.nama}</td><td class="p-2.5 font-mono text-purple-300">${p.nik}</td><td class="p-2.5">${p.departemen}</td><td class="p-2.5 text-amber-400 font-semibold">${p.hadiah}</td></tr>`;
+                });
+            }
+        }
+
+        // Import Peserta Excel
+        function importPeserta(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const data = new Uint8Array(evt.target.result);
+                const workbook = XLSX.read(data, {type: 'array'});
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const json = XLSX.utils.sheet_to_json(firstSheet);
+                
+                if(json.length > 0) {
+                    pesertaList = json.map(item => ({
+                        nama: item.nama || item.Nama || item.NAMA || "Tanpa Nama",
+                        nik: String(item.nik || item.NIK || item.Nik || "-"),
+                        departemen: item.departemen || item.Departemen || item.DEPARTEMEN || "-"
+                    }));
+                    updateBadges();
+                    renderTables();
+                    alert(`Berhasil memuat ${pesertaList.length} data peserta dari Excel!`);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Import Hadiah Excel
+        function importHadiah(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const data = new Uint8Array(evt.target.result);
+                const workbook = XLSX.read(data, {type: 'array'});
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const json = XLSX.utils.sheet_to_json(firstSheet);
+                
+                if(json.length > 0) {
+                    hadiahList = json.map(item => {
+                        const qty = parseInt(item.qty || item.QTY || item.Jumlah || 1);
+                        return {
+                            hadiah: item.hadiah || item.Hadiah || item.HADIAH || "Hadiah",
+                            qty: qty,
+                            sisa: qty
+                        };
+                    });
+                    updateBadges();
+                    updateDropdownHadiah();
+                    renderTables();
+                    alert(`Berhasil memuat ${hadiahList.length} daftar hadiah dari Excel!`);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Export Pemenang Excel
+        function exportPemenangExcel() {
+            if(pemenangList.length === 0) {
+                alert("Belum ada data pemenang untuk diexport.");
+                return;
+            }
+            const worksheet = XLSX.utils.json_to_sheet(pemenangList);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Daftar Pemenang");
+            XLSX.writeFile(workbook, "Pemenang_Family_Gathering_Kao_2026.xlsx");
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
